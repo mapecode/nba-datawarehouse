@@ -31,7 +31,7 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\usepackage[english]{babel} % English language hyphenation
+\usepackage[spanish]{babel} % English language hyphenation
 
 \usepackage{graphicx} % Required for including images
 \graphicspath{{Figures/}{./}} % Specifies where to look for included images (trailing slash required)
@@ -90,7 +90,7 @@
 		
 		\vspace{50pt} % Vertical whitespace between the title and author name
 		
-		{\large\@author}\\ % Author name
+		{\large\@author}\\Mario Pérez Sánchez-Montañez, David Camuñas Sánchez\\ 
 		\@date % Date
 		
 		\vspace{40pt} % Vertical whitespace between the author block and abstract
