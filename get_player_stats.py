@@ -5,10 +5,10 @@ import pandas as pd
 # NBA season we will be analyzing
 year = 2019
 # URL page we will scraping (see image above)
-url = "https://www.basketball-reference.com/leagues/NBA_{}_per_game.html".format(year)
+url = "https://www.basketball-reference.com/leagues/NBA_2019_totals.html".format(year)
 # this is the HTML from the given URL
 html = urlopen(url)
-soup = BeautifulSoup(html, features="lxml")
+soup = BeautifulSoup(html, features="html.parser")
 
 # use findALL() to get the column headers
 soup.findAll('tr', limit=2)
