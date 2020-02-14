@@ -23,7 +23,7 @@ rows = soup.findAll('tr')[1:]
 team_stats = [[td.getText() for td in rows[i].findAll('td')]
             for i in range(len(rows))]
 
-team_stats_df = pd.DataFrame(team_stats, columns = headers)
+team_stats_df = pd.DataFrame(team_stats, columns = headers).sort_values('Team')
 
 # Save stats in csv file
 team_stats_df.to_csv('team_stats.csv')

@@ -16,7 +16,7 @@ team_names = [[td.getText().replace('\n','') for td in rows[i].findAll('td')]
 
 
 # Create DataFrame
-team_names_df = pd.DataFrame(team_names, columns = ['Abreviation','Name'])
+team_names_df = pd.DataFrame(team_names, columns = ['Key','Name']).sort_values('Name')
 
 # Save stats in csv file
 team_names_df.to_csv('team_names.csv')
