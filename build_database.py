@@ -13,6 +13,7 @@ def load_data():
 
     # Teams Abbreviation DataFrame
     teams_abbreviation_df = get_entire_team_name()
+    teams_abbreviation_df.at[23,'Key']= 'PHO'
 
     # Teams DataFrame
     teams_df = get_team_stats(2019).reset_index().rename(columns={'index': 'id'})
@@ -80,7 +81,7 @@ def build_central_df():
 
 def build_database():
     global players_df, teams_df, rookies_df, central_df
-    
+
     sql_data = 'nba_data.db'
     connection = sqlite.connect(sql_data)
 
