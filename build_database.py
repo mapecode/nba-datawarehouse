@@ -14,6 +14,11 @@ def load_data():
     # Teams Abbreviation DataFrame
     teams_abbreviation_df = get_entire_team_name()
     teams_abbreviation_df.at[23,'Key']= 'PHO'
+    teams_abbreviation_df.at[1,'Key']= 'BOS'
+    teams_abbreviation_df.at[2,'Key']= 'BRK'
+    teams_abbreviation_df.at[3,'Key']= 'CHO'
+
+
 
     # Teams DataFrame
     teams_df = get_team_stats(2019).reset_index().rename(columns={'index': 'id'})
