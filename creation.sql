@@ -3,7 +3,6 @@ CREATE TABLE "PLAYERS" (
 	"Player"	TEXT,
 	"Pos"	TEXT,
 	"Age"	REAL,
-	"Tm"	TEXT,
 	"G"	REAL,
 	"GS"	REAL,
 	"MP"	REAL,
