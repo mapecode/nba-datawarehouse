@@ -23,7 +23,7 @@ def load_data():
 
 
 def clean_data(players_df, teams_df, rookies_df):
-    # Remove columns we don't use
+    # Remove columns that we don't use
     players_df = players_df.drop('eFG%', 1)
     teams_df = teams_df.drop(['Div', 'MOV/A', 'ORtg/A', 'DRtg/A', 'NRtg/A'], 1)
     rookies_df = rookies_df.drop(['Yrs', 'MP', 'PTS', 'TRB', 'AST'], 1)
