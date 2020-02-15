@@ -1,2 +1,5 @@
 \contentsline {chapter}{\nonumberline Jueves, 13 Febrero 2020}{1}{chapter*.2}% 
 \contentsline {experiment}{\numberline {1}Obtenci\IeC {\'o}n de los datos para el \textit {DataWarehouse}}{1}{experiment.1.1}% 
+\contentsline {experiment}{\numberline {2}Cambio en dise\IeC {\~n}o del \textit {DataWarehouse}}{1}{experiment.1.2}% 
+\contentsline {chapter}{\nonumberline Viernes, 14 Febrero 2020}{2}{chapter*.3}% 
+\contentsline {experiment}{\numberline {1}Primer versi\IeC {\'o}n de la base de datos}{2}{experiment.2.1}% 

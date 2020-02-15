@@ -120,7 +120,19 @@
 
 \experiment{Obtención de los datos para el \textit{DataWarehouse}}
 
-Desarrollamos tres \textit{scripts} en \textit{Python} utilizando técnicas de \textit{web scrapping} para obtener datos de jugadores, \textit{rookies} y equipos de \href{https://www.basketball-reference.com/leagues/NBA_2019.html}{\textit{Basketball Reference}}
+Desarrollamos tres \textit{scripts} en \textit{Python} utilizando técnicas de \textit{web scrapping} para obtener datos de jugadores y equipos de \href{https://www.basketball-reference.com/leagues/NBA_2019.html}{\textit{Basketball Reference}}
+
+\experiment{Cambio en diseño del \textit{DataWarehouse}}
+Decidimos que vamos a tener una tabla con todos los jugadores, con los 30 equipos y de \textit{rookies} (jugadores nóveles). Todo ello estará relacionado en una tabla central, siguiendo el modelo de estrella.
+
+
+\labday{Viernes, 14 Febrero 2020}
+
+\experiment{Primer versión de la base de datos}
+Realizamos la construcción de la primera versión de la base de datos. Uno de los problemas que hemos encontrado es con los jugadores que han jugado en varios equipos en la misma temporada, ya que en la fuente que hemos usado se muestran datos en cada equipo donde han jugado y lo totales, identificando estos últimos como 'TOT' en la columna de equipo.\\
+
+Hemos decido mantener esta estructura identificando las estadísticas totales con -1, para que en la base de datos no se utilice un id de un equipo existente.
+
 
 %-----------------------------------------
 
