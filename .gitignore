@@ -6,3 +6,5 @@
 .ipynb_checkpoints/Players-checkpoint.ipynb
 .ipynb_checkpoints/Notebook-checkpoint.ipynb
 nba_data.sqlite.sqbpro
+*.xml
+*.pyc
