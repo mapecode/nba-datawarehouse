@@ -88,7 +88,7 @@
 \HRule \\[1.5cm]
 \end{center}
 }
-\author{\Huge Mario Pérez Sánchez-Montañez \\ \\ \Huge David Camuñas Sánchez \\[2cm]} % Your name and email address
+\author{\Huge Mario Pérez Sánchez-Montañez \\ \\ \Huge David Camuñas Sánchez \\ \\ \Huge Francesco Zingariello \\[2cm]} % Your name and email address
 %\date{Beginning 6 February 2012} % Beginning date
 \maketitle
 
@@ -115,14 +115,19 @@
 %Text
 
 %----------------------------------------------------------------------------------------
+\labday{Martes, 11 de Febrero}
+\experiment{Elección de la tecnologías}
+Se ha decidido usar como tecnología \textit{Python} debido a la multiples librerías que posee relacionadas con el ámbito del análisis de datos.
+\experiment{Elección del motor de base de datos}
+Se ha elegido como motor de nuestra base de datos \textit{SQLite}, ya que soporta funciones SQL y podemos almacenar la base de datos completa en un solo archivo.
 
 \labday{Jueves, 13 Febrero 2020}
 
 \experiment{Obtención de los datos para el \textit{DataWarehouse}}
+Desarrollamos tres \textit{scripts} en \textit{Python} utilizando técnicas de \textit{web scrapping} para obtener datos de jugadores y equipos de \href{https://www.basketball-reference.com/leagues/NBA_2019.html}{\textit{Basketball Reference}}.
 
-Desarrollamos tres \textit{scripts} en \textit{Python} utilizando técnicas de \textit{web scrapping} para obtener datos de jugadores y equipos de \href{https://www.basketball-reference.com/leagues/NBA_2019.html}{\textit{Basketball Reference}}
 
-\experiment{Cambio en diseño del \textit{DataWarehouse}}
+\experiment{Cambio en diseño del \textit{Data Warehouse}}
 Decidimos que vamos a tener una tabla con todos los jugadores, con los 30 equipos y de \textit{rookies} (jugadores nóveles). Todo ello estará relacionado en una tabla central, siguiendo el modelo de estrella.
 
 
@@ -132,6 +137,20 @@ Decidimos que vamos a tener una tabla con todos los jugadores, con los 30 equipo
 Realizamos la construcción de la primera versión de la base de datos. Uno de los problemas que hemos encontrado es con los jugadores que han jugado en varios equipos en la misma temporada, ya que en la fuente que hemos usado se muestran datos en cada equipo donde han jugado y lo totales, identificando estos últimos como 'TOT' en la columna de equipo.\\
 
 Hemos decido mantener esta estructura identificando las estadísticas totales con -1, para que en la base de datos no se utilice un id de un equipo existente.
+
+\experiment{Primeras consultas en la Base de Datos}
+Hemos realizado las primeras las consultas en la base de datos de nuestro Data WareHouse. 
+Cuyo resultado ha salido satisfactoriamente.
+
+
+\labday{Lunes, 17 Febrero 2020}
+
+\experiment{Cambio en la obtención de datos}
+Se ha realizado unos cambios en cuanto a la forma de obtener los datos. Estos cambios han afectado al número de \textit{scripts}. Ahora los datos se obtienen mediante un solo \textit{script} (en \textit{Python}), cuyo objetivo es obtener los datos mediante la técnica conocida como \textit{Web Scrapping}. Además para la creacíon de las tablas que compondrán nuestra base de datos, se utiliza otro nuevo \textit{script} (en \textit{SQL}).
+
+\experiment{Realización de consultas}
+Se han realizado una serie de consultas, cuyo objetivo es obtener la información necesaria de nuestra base de datos. Y así obtener información para poder llevar a cabo un estudio estadístico.
+Este estudio se realizara mediante el uso de consultas (dicho anteriormente) y el uso de \textit{dataframes}.
 
 
 %-----------------------------------------
