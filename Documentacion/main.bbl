@@ -1,13 +1,51 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{Smith:2012qr}
-J.~M. Smith and A.~B. Jones.
-\newblock {\em {B}ook {T}itle}.
-\newblock Publisher, 7th edition, 2012.
+\bibitem{estrella}
+\url{https://es.wikipedia.org/wiki/Esquema_en_estrella}.
+\newblock Esquema en estrella.
 
-\bibitem{Smith:2013jd}
-A.~B. Jones and J.~M. Smith.
-\newblock {A}rticle {T}itle.
-\newblock {\em Journal title}, 13(52):123--456, March 2013.
+\bibitem{nba}
+\url{https://es.wikipedia.org/wiki/National_Basketball_Association}.
+\newblock National basketball association.
+
+\bibitem{web_scraping}
+\url{https://es.wikipedia.org/wiki/Web_scraping}.
+\newblock Web scraping.
+
+\bibitem{pandas}
+\url{https://pandas.pydata.org/}.
+\newblock Pandas.
+
+\bibitem{dataframe}
+\url{https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html}.
+\newblock Pandas dataframe.
+
+\bibitem{web_scraping_nba}
+\url{https://towardsdatascience.com/web-scraping-nba-stats-4b4f8c525994}.
+\newblock Web scraping nba stats.
+
+\bibitem{basket_ref}
+\url{https://www.basketball-reference.com}.
+\newblock Basketball reference.
+
+\bibitem{rookies_data}
+\url{https://www.basketball-reference.com/leagues/NBA_2019_rookies-season-stats.html}.
+\newblock Rookies stats.
+
+\bibitem{players_data}
+\url{https://www.basketball-reference.com/leagues/NBA_2019_totals.html}.
+\newblock Player stats.
+
+\bibitem{Beautiful_Soup}
+\url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}.
+\newblock Beautiful soup.
+
+\bibitem{python}
+\url{https://www.python.org/}.
+\newblock Python software fundation.
+
+\bibitem{sqlite}
+\url{https://www.sqlite.org/index.html}.
+\newblock Sqlite.
 
 \end{thebibliography}

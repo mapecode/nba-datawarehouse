@@ -20,12 +20,13 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[11pt]{diazessay} % Font size (can be 10pt, 11pt or 12pt)
+\usepackage{listings}
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
 %----------------------------------------------------------------------------------------
 
-\title{\textbf{Surviving the End of the World} \\ {\Large\itshape What to Do When Your Planet Is Destroyed}} % Title and subtitle
+\title{\textbf{NBA Data WareHouse}} % Title and subtitle
 
 \author{\textbf{Bases de Datos Avanzadas} \\ \textit{Escuela Superior Informática (UCLM)}} % Author and institution
 
@@ -44,10 +45,10 @@
 %\renewcommand{\abstractname}{Summary} % Uncomment to change the name of the abstract to something else
 
 \begin{abstract}
-Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris lacinia lorem, ac congue leo felis eu turpis. Sed nec nunc pellentesque, gravida eros at, porttitor ipsum. Praesent consequat urna a lacus lobortis ultrices eget ac metus. In tempus hendrerit rhoncus. Mauris dignissim turpis id sollicitudin lacinia. Praesent libero tellus, fringilla nec ullamcorper at, ultrices id nulla. Phasellus placerat a tellus a malesuada.
+
 \end{abstract}
 
-\hspace*{3.6mm}\textit{Keywords:} lorem, ipsum, dolor, sit amet, lectus % Keywords
+%\hspace*{3.6mm}\textit{Keywords:} lorem, ipsum, dolor, sit amet, lectus % Keywords
 
 \vspace{30pt} % Vertical whitespace between the abstract and first section
 
@@ -55,68 +56,99 @@ Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris
 %	ESSAY BODY
 %----------------------------------------------------------------------------------------
 
-\section*{Introduction}
+\section*{Introducción}
+Un almacén de datos o \textit{Data Warehouse} es el instrumento que las organizaciones encontraron centralizar toda la información relevante, el objetivo de tomar decisiones informadas con más facilidad. Es decir, facilitar el almacenaje y análisis de los datos de la empresa.\\
 
-This statement requires citation \cite{Smith:2012qr}; this one does too \cite{Smith:2013jd}. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dictum lacus sem, ut varius ante dignissim ac. Sed a mi quis lectus feugiat aliquam. Nunc sed vulputate velit. Sed commodo metus vel felis semper, quis rutrum odio vulputate. Donec a elit porttitor, facilisis nisl sit amet, dignissim arcu. Vivamus accumsan pellentesque nulla at euismod. Duis porta rutrum sem, eu facilisis mi varius sed. Suspendisse potenti. Mauris rhoncus neque nisi, ut laoreet augue pretium luctus. Vestibulum sit amet luctus sem, luctus ultrices leo. Aenean vitae sem leo.
+En nuestro caso, hemos construido un almacén de datos para almacenar las estadísticas mas relevantes de la temporada 2018-2019 de la competición de baloncesto más popular, la NBA \cite{nba}. El trabajo consiste en la extracción de datos de la competición disponibles en \cite{basket_ref} y almacenaje de estos datos en una base datos relacional para su posterior estudio.\\
 
-Nullam semper quam at ante convallis posuere. Ut faucibus tellus ac massa luctus consectetur. Nulla pellentesque tortor et aliquam vehicula. Maecenas imperdiet euismod enim ut pharetra. Suspendisse pulvinar sapien vitae placerat pellentesque. Nulla facilisi. Aenean vitae nunc venenatis, vehicula neque in, congue ligula.
-
-Pellentesque quis neque fringilla, varius ligula quis, malesuada dolor. Aenean malesuada urna porta, condimentum nisl sed, scelerisque nisi. Suspendisse ac orci quis massa porta dignissim. Morbi sollicitudin, felis eget tristique laoreet, ante lacus pretium lacus, nec ornare sem lorem a velit. Pellentesque eu erat congue, ullamcorper ante ut, tristique turpis. Nam sodales mi sed nisl tincidunt vestibulum. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+Para el análisis y la extracción de datos, se llevará a cabo el proyecto con \textit{Python} \cite{python} y como motor de base de datos se utilizará \textit{SQLite} \cite{sqlite}. Nuestra base de datos estará formada por cuatro tablas, que se describirán posteriormente.
 
 %------------------------------------------------
 
-\section*{Section Name}
+\section*{Obtención de los datos}
+Los datos se han obtenido aplicando técnicas de \textit{web scraping} \cite{web_scraping} gracias a la librería \textit{Beautiful Soup} \cite{Beautiful_Soup} de \textit{Python}. Con esta librería se obtiene el código HTML de una pagina web y se pueden realizar diversas operaciones con esa información, en nuestro caso hemos construido un \textit{dataframe} \cite{dataframe} para poder construir posteriormente la base de datos.
 
-Cras gravida, est vel interdum euismod, tortor mi lobortis mi, quis adipiscing elit lacus ut orci. Phasellus nec fringilla nisi, ut vestibulum neque. Aenean non risus eu nunc accumsan condimentum at sed ipsum.
-\begin{wrapfigure}{l}{0.42\textwidth} % Inline image example, use an 'r' column type to position the figure on the right
-	\includegraphics[width=\linewidth]{fish.png}
-	\caption{An example fish.}
-\end{wrapfigure}
-Aliquam fringilla non diam sed varius. Suspendisse tellus felis, hendrerit non bibendum ut, adipiscing vitae diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lobortis purus eget nisl scelerisque, commodo rhoncus lacus porta. Vestibulum vitae turpis tincidunt, varius dolor in, dictum lectus. Aenean ac ornare augue, ac facilisis purus. Sed leo lorem, molestie sit amet fermentum id, suscipit ut sem. Vestibulum orci arcu, vehicula sed tortor id, ornare dapibus lorem. Praesent aliquet iaculis lacus nec fermentum. Morbi eleifend blandit dolor, pharetra hendrerit neque ornare vel. Nulla ornare, nisl eget imperdiet ornare, libero enim interdum mi, ut lobortis quam velit bibendum nibh.
+\subsection{Datos de jugadores}
+Los datos relacionados con los jugadores se han obtenido gracias al siguiente código \cite{web_scraping_nba} en \textit{Python}:\\
 
+\pythonexternal{../player_stats.py}
+
+Como se puede ver, el programa esta formado por dos funciones. La primera para obtener las estadísticas globales de todos los jugadores \cite{players_data} y con la segundo se obtienen los datos relativos a los \textit{rookies} (jugadores nóveles) \cite{rookies_data}. Ambas funciones devolverán un objeto \textit{dataframe} \cite{dataframe}, porque en el programa principal se llamará a estas funciones para construir la base de datos, como se ha comentado anteriormente. Para el tratamiento de los datos en forma de \textit{dataframe} utilizaremos la librería \textit{pandas} \cite{pandas}.\\
+
+Para obtener los datos que nos interesan de la web es necesario que sepamos cuáles son las etiquetas HTML que debemos de obtener del objeto \textit{soup}. Esto normalmente se realiza inspeccionando la página web con cualquier navegador.
+
+\subsection{Datos de equipos}
+Los datos relativos a los equipos de la \textit{nba} se han obtenido de forma similar a los datos de los jugadores:
+
+\pythonexternal{../team_stats.py}
+
+La función para obtener los datos de los equipos es muy similar a las funciones mencionadas anteriormente, con la diferencia que el \textit{dataframe} que retornamos lo ordenamos por el nombre del equipo. La segunda función en un principio no la desarrollamos, pero en la construcción de la base de datos apreciamos que los datos de los jugadores indican el equipo mediante abreviaturas. Por lo tanto esta función la utilizaremos para establecer las equivalencias.
+
+\section*{Creación de la base de datos}
+La creación de la base de datos la hemos automatizado gracias al siguiente \textit{script} que llama a las funciones explicadas en la sección anterior \ref{get_data}:
+
+\pythonexternal{../build_database.py}
+
+El programa lleva a cabo las siguientes operaciones:
 \begin{itemize}
-	\item First bullet point item
-	\item Second bullet point item
-	\item Third bullet point item
+	\item \textbf{Cargar los datos:} se llama a las funciones explicadas anteriormente para cargar la información relativas a jugadores, \textit{rookies} y equipos.  Además, en esta parte del programa también se establece la equivalencia de los equipos con sus abreviaturas.
+	\item \textbf{Transformación de datos:} se realiza una limpieza de los datos, que consiste en eliminar las columnas que no vamos a utilizar, eliminar las filas vacías y eliminación de jugadores que no juegan en un equipo de la nba.
+	\item \textbf{Construcción del \textit{dataframe} central}: estos datos se usarán para construir una tabla central que relacione los datos de jugadores, \textit{rookies} y equipos, siguiendo el modelo de estrella \cite{estrella}.
+	\item \textbf{Construcción de la base datos}: en este último paso se construirán las cuatro tablas de la base datos y se introducirán los datos guardados en los cuatro \textit{dataframes} que hemos comentado. Las operaciones que se ejecutan para crear las tabla y sus respectivas relaciones se pueden ver en el fichero \textit{\textbf{creation.sql}}.
+
+
 \end{itemize}
 
-Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris lacinia lorem, ac congue leo felis eu turpis. Sed nec nunc pellentesque, gravida eros at, porttitor ipsum. Praesent consequat urna a lacus lobortis ultrices eget ac metus. In tempus hendrerit rhoncus. Mauris dignissim turpis id sollicitudin lacinia. Praesent libero tellus, fringilla nec ullamcorper at, ultrices id nulla. Phasellus placerat a tellus a malesuada.
-
-\begin{enumerate}
-	\item First numbered list item
-	\item Second numbered list item
-\end{enumerate}
+%Cras gravida, est vel interdum euismod, tortor mi lobortis mi, quis adipiscing elit lacus ut orci. Phasellus nec fringilla nisi, ut vestibulum neque. Aenean non risus eu nunc accumsan condimentum at sed ipsum.
+%\begin{wrapfigure}{l}{0.42\textwidth} % Inline image example, use an 'r' column type to position the figure on the right
+%	\includegraphics[width=\linewidth]{fish.png}
+%	\caption{An example fish.}
+%\end{wrapfigure}
+%Aliquam fringilla non diam sed varius. Suspendisse tellus felis, hendrerit non bibendum ut, adipiscing vitae diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lobortis purus eget nisl scelerisque, commodo rhoncus lacus porta. Vestibulum vitae turpis tincidunt, varius dolor in, dictum lectus. Aenean ac ornare augue, ac facilisis purus. Sed leo lorem, molestie sit amet fermentum id, suscipit ut sem. Vestibulum orci arcu, vehicula sed tortor id, ornare dapibus lorem. Praesent aliquet iaculis lacus nec fermentum. Morbi eleifend blandit dolor, pharetra hendrerit neque ornare vel. Nulla ornare, nisl eget imperdiet ornare, libero enim interdum mi, ut lobortis quam velit bibendum nibh.
+%
+%\begin{itemize}
+%	\item First bullet point item
+%	\item Second bullet point item
+%	\item Third bullet point item
+%\end{itemize}
+%
+%Morbi tempor congue porta. Proin semper, leo vitae faucibus dictum, metus mauris lacinia lorem, ac congue leo felis eu turpis. Sed nec nunc pellentesque, gravida eros at, porttitor ipsum. Praesent consequat urna a lacus lobortis ultrices eget ac metus. In tempus hendrerit rhoncus. Mauris dignissim turpis id sollicitudin lacinia. Praesent libero tellus, fringilla nec ullamcorper at, ultrices id nulla. Phasellus placerat a tellus a malesuada.
+%
+%\begin{enumerate}
+%	\item First numbered list item
+%	\item Second numbered list item
+%\end{enumerate}
 
 %------------------------------------------------
 
-\section*{Conclusion}
-
-Fusce in nibh augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In dictum accumsan sapien, ut hendrerit nisi. Phasellus ut nulla mauris. Phasellus sagittis nec odio sed posuere. Vestibulum porttitor dolor quis suscipit bibendum. Mauris risus lectus, cursus vitae hendrerit posuere, congue ac est. Suspendisse commodo eu eros non cursus. Mauris ultrices venenatis dolor, sed aliquet odio tempor pellentesque. Duis ultricies, mauris id lobortis vulputate, tellus turpis eleifend elit, in gravida leo tortor ultricies est. Maecenas vitae ipsum at dui sodales condimentum a quis dui. Nam mi sapien, lobortis ac blandit eget, dignissim quis nunc.
-
-Donec luctus tincidunt mauris, non ultrices ligula aliquam id. Sed varius, magna a faucibus congue, arcu tellus pellentesque nisl, vel laoreet magna eros et magna. Vivamus lobortis elit eu dignissim ultrices. Fusce erat nulla, ornare at dolor quis, rhoncus venenatis velit. Donec sed elit mi. Sed semper tellus a convallis viverra. Maecenas mi lorem, placerat sit amet sem quis, adipiscing tincidunt turpis. Cras a urna et tellus dictum eleifend. Fusce dignissim lectus risus, in bibendum tortor lacinia interdum.
-
-\begin{table}[h] % [h] forces the table to be output where it is defined in the code (it suppresses floating)
-	\caption{Example table.}
-	\centering
-	\begin{tabular}{l l r}
-		\toprule
-		\multicolumn{2}{c}{Name} \\
-		\cmidrule(r){1-2}
-		First Name & Last Name & Grade \\
-		\midrule
-		John & Doe & $7.5$ \\
-		Richard & Miles & $5$ \\
-		\bottomrule
-	\end{tabular}
-\end{table}
-
-Fusce eleifend porttitor arcu, id accumsan elit pharetra eget. Mauris luctus velit sit amet est sodales rhoncus. Donec cursus suscipit justo, sed tristique ipsum fermentum nec. Ut tortor ex, ullamcorper varius congue in, efficitur a tellus. Vivamus ut rutrum nisi. Phasellus sit amet enim efficitur, aliquam nulla id, lacinia mauris. Quisque viverra libero ac magna maximus efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum mollis eros in tellus fermentum, vitae tristique justo finibus. Sed quis vehicula nibh. Etiam nulla justo, pellentesque id sapien at, semper aliquam arcu. Integer at commodo arcu. Quisque dapibus ut lacus eget vulputate.
+%\section*{Conclusion}
+%
+%Fusce in nibh augue. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In dictum accumsan sapien, ut hendrerit nisi. Phasellus ut nulla mauris. Phasellus sagittis nec odio sed posuere. Vestibulum porttitor dolor quis suscipit bibendum. Mauris risus lectus, cursus vitae hendrerit posuere, congue ac est. Suspendisse commodo eu eros non cursus. Mauris ultrices venenatis dolor, sed aliquet odio tempor pellentesque. Duis ultricies, mauris id lobortis vulputate, tellus turpis eleifend elit, in gravida leo tortor ultricies est. Maecenas vitae ipsum at dui sodales condimentum a quis dui. Nam mi sapien, lobortis ac blandit eget, dignissim quis nunc.
+%
+%Donec luctus tincidunt mauris, non ultrices ligula aliquam id. Sed varius, magna a faucibus congue, arcu tellus pellentesque nisl, vel laoreet magna eros et magna. Vivamus lobortis elit eu dignissim ultrices. Fusce erat nulla, ornare at dolor quis, rhoncus venenatis velit. Donec sed elit mi. Sed semper tellus a convallis viverra. Maecenas mi lorem, placerat sit amet sem quis, adipiscing tincidunt turpis. Cras a urna et tellus dictum eleifend. Fusce dignissim lectus risus, in bibendum tortor lacinia interdum.
+%
+%\begin{table}[h] % [h] forces the table to be output where it is defined in the code (it suppresses floating)
+%	\caption{Example table.}
+%	\centering
+%	\begin{tabular}{l l r}
+%		\toprule
+%		\multicolumn{2}{c}{Name} \\
+%		\cmidrule(r){1-2}
+%		First Name & Last Name & Grade \\
+%		\midrule
+%		John & Doe & $7.5$ \\
+%		Richard & Miles & $5$ \\
+%		\bottomrule
+%	\end{tabular}
+%\end{table}
+%
+%Fusce eleifend porttitor arcu, id accumsan elit pharetra eget. Mauris luctus velit sit amet est sodales rhoncus. Donec cursus suscipit justo, sed tristique ipsum fermentum nec. Ut tortor ex, ullamcorper varius congue in, efficitur a tellus. Vivamus ut rutrum nisi. Phasellus sit amet enim efficitur, aliquam nulla id, lacinia mauris. Quisque viverra libero ac magna maximus efficitur. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum mollis eros in tellus fermentum, vitae tristique justo finibus. Sed quis vehicula nibh. Etiam nulla justo, pellentesque id sapien at, semper aliquam arcu. Integer at commodo arcu. Quisque dapibus ut lacus eget vulputate.
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
-\bibliographystyle{unsrt}
+\bibliographystyle{abbrv}
 
 \bibliography{sample.bib}
 

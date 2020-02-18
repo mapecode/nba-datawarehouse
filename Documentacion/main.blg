@@ -1,46 +1,71 @@
 This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: main.aux
-The style file: unsrt.bst
+The style file: abbrv.bst
 Database file #1: sample.bib
-You've used 2 entries,
-            1791 wiz_defined-function locations,
-            461 strings with 3697 characters,
-and the built_in function-call counts, 424 in all, are:
-= -- 36
-> -- 16
+Warning--entry type for "nba" isn't style-file defined
+--line 1 of file sample.bib
+Warning--entry type for "basket_ref" isn't style-file defined
+--line 6 of file sample.bib
+Warning--entry type for "python" isn't style-file defined
+--line 11 of file sample.bib
+Warning--entry type for "sqlite" isn't style-file defined
+--line 16 of file sample.bib
+Warning--entry type for "web_scraping" isn't style-file defined
+--line 21 of file sample.bib
+Warning--entry type for "Beautiful_Soup" isn't style-file defined
+--line 26 of file sample.bib
+Warning--entry type for "dataframe" isn't style-file defined
+--line 31 of file sample.bib
+Warning--entry type for "web_scraping_nba" isn't style-file defined
+--line 36 of file sample.bib
+Warning--entry type for "players_data" isn't style-file defined
+--line 41 of file sample.bib
+Warning--entry type for "rookies_data" isn't style-file defined
+--line 46 of file sample.bib
+Warning--entry type for "pandas" isn't style-file defined
+--line 51 of file sample.bib
+Warning--entry type for "estrella" isn't style-file defined
+--line 56 of file sample.bib
+You've used 12 entries,
+            2118 wiz_defined-function locations,
+            534 strings with 4717 characters,
+and the built_in function-call counts, 2338 in all, are:
+= -- 192
+> -- 84
 < -- 0
-+ -- 6
-- -- 4
-* -- 29
-:= -- 72
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 2
++ -- 36
+- -- 24
+* -- 62
+:= -- 383
+add.period$ -- 24
+call.type$ -- 12
+change.case$ -- 48
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 19
-empty$ -- 44
-format.name$ -- 4
-if$ -- 94
+cite$ -- 12
+duplicate$ -- 84
+empty$ -- 265
+format.name$ -- 24
+if$ -- 505
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 3
-newline$ -- 13
-num.names$ -- 2
-pop$ -- 7
+int.to.str$ -- 12
+missing$ -- 0
+newline$ -- 51
+num.names$ -- 24
+pop$ -- 96
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 36
 quote$ -- 0
-skip$ -- 7
+skip$ -- 119
 stack$ -- 0
-substring$ -- 21
-swap$ -- 2
+substring$ -- 60
+swap$ -- 12
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 48
 warning$ -- 0
-while$ -- 3
-width$ -- 3
-write$ -- 24
+while$ -- 24
+width$ -- 14
+write$ -- 86
+(There were 12 warnings)

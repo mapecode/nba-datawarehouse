@@ -4,12 +4,14 @@ import pandas as pd
 import sqlite3 as sqlite
 import os
 
-players_df, teams_df, rookies_df, central_df = None, None, None, None
+players_df, teams_df = None, None
+rookies_df, central_df = None, None
 
 def load_data():
     global players_df, teams_df, rookies_df
     # Players DataFrame
-    players_df = get_player_stats(2019).reset_index().rename(columns={'index': 'id'})
+    players_df = get_player_stats(2019).reset_index()
+    players_df = players_df.rename(columns={'index': 'id'})
 
     # Teams Abbreviation DataFrame
     teams_abbreviation_df = get_entire_team_name()
@@ -21,19 +23,23 @@ def load_data():
 
 
     # Teams DataFrame
-    teams_df = get_team_stats(2019).reset_index().rename(columns={'index': 'id'})
+    teams_df = get_team_stats(2019).reset_index()
+    teams_df = teams_df.rename(columns={'index': 'id'})
     teams_df.insert(1, "Key", teams_abbreviation_df['Key'], False)
 
     # Rookie DataFrame
-    rookies_df = get_rookie_stats(2019).reset_index().rename(columns={'index': 'id'})
+    rookies_df = get_rookie_stats(2019).reset_index()
+    rookies_df = rookies_df.rename(columns={'index': 'id'})
 
 
 def clean_data():
     global players_df, teams_df, rookies_df
     # Remove columns that we don't use
     players_df = players_df.drop('eFG%', 1)
-    teams_df = teams_df.drop(['Div', 'MOV/A', 'ORtg/A', 'DRtg/A', 'NRtg/A'], 1)
-    rookies_df = rookies_df.drop(['Yrs', 'MP', 'PTS', 'TRB', 'AST'], 1)
+    teams_df = teams_df.drop(
+        ['Div', 'MOV/A', 'ORtg/A', 'DRtg/A', 'NRtg/A'], 1)
+    rookies_df = rookies_df.drop(
+        ['Yrs', 'MP', 'PTS', 'TRB', 'AST'], 1)
 
     # Remove NaN rows
     players_df = players_df.dropna()
@@ -55,7 +61,9 @@ def clean_data():
 
 def build_central_df():
     global players_df, teams_df, rookies_df, central_df
-    central_df = pd.DataFrame(columns=['id_player', 'id_team', 'Player', 'Team', 'Rookie'])
+    central_df = pd.DataFrame(
+        columns=['id_player', 'id_team', 
+        'Player', 'Team', 'Rookie'])
 
     # build id_player
     central_df['id_player'] = players_df['id']
@@ -65,19 +73,25 @@ def build_central_df():
     for i, row in central_df.iterrows():
         # build id team
         if players_df.loc[i]['Tm'] == 'TOT':
-            row['id_team'] = -1  # id for total statistics, be cause he played in more one team
+            # id for total statistics, be cause he 
+            # played in more one team
+            row['id_team'] = -1
         else:
-            row['id_team'] = int(teams_df.loc[list(teams_df['Key']).index(players_df.loc[i]['Tm'])]['id'])
+            row['id_team'] = int(teams_df.loc[list(
+                teams_df['Key']).index(
+                    players_df.loc[i]['Tm'])]['id'])
 
         # build team name
         if row['id_team'] == -1:
             row['Team'] = 'Total'
         else:
-            row['Team'] = teams_df.loc[list(teams_df['id']).index(row['id_team'])]['Team']
+            row['Team'] = teams_df.loc[list(
+                teams_df['id']).index(row['id_team'])]['Team']
 
         # build is rookie
         if row['Player'] in list(rookies_df['Player']):
-            row['Rookie'] = int(rookies_df.loc[list(rookies_df['Player']).index(row['Player'])]['id'])
+            row['Rookie'] = int(rookies_df.loc[list(
+                rookies_df['Player']).index(row['Player'])]['id'])
 
         central_df.loc[i] = row
     
@@ -100,16 +114,20 @@ def build_database():
     connection.cursor().executescript(query)
 
     # Load players_df in db
-    players_df.to_sql('PLAYERS', connection, if_exists='append', index=False)
+    players_df.to_sql('PLAYERS', connection, 
+        if_exists='append', index=False)
 
     # Load teams_df in db
-    teams_df.to_sql('TEAMS', connection, if_exists='append', index=False)
+    teams_df.to_sql('TEAMS', connection, 
+        if_exists='append', index=False)
 
     # Load rookies_df in db
-    rookies_df.to_sql('ROOKIES', connection, if_exists='append', index=False)
+    rookies_df.to_sql('ROOKIES', connection, 
+        if_exists='append', index=False)
 
     # Load central_df in db
-    central_df.to_sql('PLAYER_TEAM', connection, if_exists='append', index=False)
+    central_df.to_sql('PLAYER_TEAM', connection, 
+        if_exists='append', index=False)
 
     # Close the connection with the db
     connection.close()
