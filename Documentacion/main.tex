@@ -95,9 +95,17 @@ El programa lleva a cabo las siguientes operaciones:
 	\item \textbf{Transformación de datos:} se realiza una limpieza de los datos, que consiste en eliminar las columnas que no vamos a utilizar, eliminar las filas vacías y eliminación de jugadores que no juegan en un equipo de la nba.
 	\item \textbf{Construcción del \textit{dataframe} central}: estos datos se usarán para construir una tabla central que relacione los datos de jugadores, \textit{rookies} y equipos, siguiendo el modelo de estrella \cite{estrella}.
 	\item \textbf{Construcción de la base datos}: en este último paso se construirán las cuatro tablas de la base datos y se introducirán los datos guardados en los cuatro \textit{dataframes} que hemos comentado. Las operaciones que se ejecutan para crear las tabla y sus respectivas relaciones se pueden ver en el fichero \textit{\textbf{creation.sql}}.
-
-
 \end{itemize}
+
+\section*{Modelo de regresión lineal}
+El modelo construido está basado en la regresión lineal simple de dos variables \cite{regresion}, los puntos totales que anota un jugador con sus intentos de tiro. El objetivo con este modelo será predecir cuántos puntos anotaría un jugador indicando los intentos de tiro.\\
+
+Los modelos predictivos o de regresión consisten en la representación de la relación entre dos (o más) variables a través de un modelo formal supone contar con una expresión lógico-matemática que resume cómo es esa relación. Además, este modelo permite realizar predicciones de los valores que tomará una de las dos variables (la que se asuma como variable de respuesta o dependiente) a partir de los valores de la otra (la que se asuma como variable explicativa, independiente o predictora) \cite{modelo_regresion}.
+
+
+
+
+
 
 %Cras gravida, est vel interdum euismod, tortor mi lobortis mi, quis adipiscing elit lacus ut orci. Phasellus nec fringilla nisi, ut vestibulum neque. Aenean non risus eu nunc accumsan condimentum at sed ipsum.
 %\begin{wrapfigure}{l}{0.42\textwidth} % Inline image example, use an 'r' column type to position the figure on the right

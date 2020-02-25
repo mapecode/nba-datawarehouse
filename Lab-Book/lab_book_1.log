@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.30)  18 FEB 2020 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.30)  25 FEB 2020 11:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -661,33 +661,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
 ]
 chapter without number
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 282.
 [4
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 282.
+chapter without number
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 285.
+[5
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 285.
  (./lab_book_1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 282.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 282.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 285.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 285.
+Package rerunfilecheck Info: File `lab_book_1.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
-
-Package rerunfilecheck Warning: File `lab_book_1.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `lab_book_1.out':
-(rerunfilecheck)             Before: E7CD2719C3FD8E538268CBF6EA2A9C4A;912
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 282.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 285.
  ) 
 Here is how much of TeX's memory you used:
- 17662 strings out of 492616
- 326080 string characters out of 6129481
+ 17656 strings out of 492616
+ 326000 string characters out of 6129481
  662080 words of memory out of 5000000
- 21473 multiletter control sequences out of 15000+600000
+ 21463 multiletter control sequences out of 15000+600000
  538116 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  47i,7n,71p,9125b,372s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -696,10 +694,10 @@ Here is how much of TeX's memory you used:
 usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></us
 r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></u
 sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on lab_book_1.pdf (8 pages, 76970 bytes).
+Output written on lab_book_1.pdf (9 pages, 77490 bytes).
 PDF statistics:
- 172 PDF objects out of 1000 (max. 8388607)
- 155 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
- 193 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 149 PDF objects out of 1000 (max. 8388607)
+ 131 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
+ 113 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,5 +1,9 @@
 \begin{thebibliography}{10}
 
+\bibitem{modelo_regresion}
+\url{http://ocw.uv.es/ciencias-de-la-salud/pruebas-1/1-3/t_09nuevo.pdf}.
+\newblock Modelo de regresión lineal.
+
 \bibitem{estrella}
 \url{https://es.wikipedia.org/wiki/Esquema_en_estrella}.
 \newblock Esquema en estrella.
@@ -7,6 +11,10 @@
 \bibitem{nba}
 \url{https://es.wikipedia.org/wiki/National_Basketball_Association}.
 \newblock National basketball association.
+
+\bibitem{regresion}
+\url{https://es.wikipedia.org/wiki/Regresión_lineal}.
+\newblock Regresión lineal.
 
 \bibitem{web_scraping}
 \url{https://es.wikipedia.org/wiki/Web_scraping}.

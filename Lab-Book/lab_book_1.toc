@@ -10,3 +10,5 @@
 \contentsline {chapter}{\nonumberline Lunes, 17 Febrero 2020}{4}{chapter*.5}% 
 \contentsline {experiment}{\numberline {1}Cambio en la obtenci\IeC {\'o}n de datos}{4}{experiment.4.1}% 
 \contentsline {experiment}{\numberline {2}Realizaci\IeC {\'o}n de consultas}{4}{experiment.4.2}% 
+\contentsline {chapter}{\nonumberline Lunes, 24 Febrero 2020}{5}{chapter*.6}% 
+\contentsline {experiment}{\numberline {1}Modelo de regresi\IeC {\'o}n lineal de jugadores}{5}{experiment.5.1}% 
