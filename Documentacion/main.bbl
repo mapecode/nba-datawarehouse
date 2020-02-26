@@ -8,6 +8,10 @@
 \url{https://es.wikipedia.org/wiki/Esquema_en_estrella}.
 \newblock Esquema en estrella.
 
+\bibitem{multicol}
+\url{https://es.wikipedia.org/wiki/Multicolinealidad}.
+\newblock Multicolinealidad.
+
 \bibitem{nba}
 \url{https://es.wikipedia.org/wiki/National_Basketball_Association}.
 \newblock National basketball association.
@@ -19,6 +23,10 @@
 \bibitem{web_scraping}
 \url{https://es.wikipedia.org/wiki/Web_scraping}.
 \newblock Web scraping.
+
+\bibitem{jupyter}
+\url{https://jupyter.org/}.
+\newblock Jupyter.
 
 \bibitem{pandas}
 \url{https://pandas.pydata.org/}.
@@ -48,6 +56,10 @@
 \url{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}.
 \newblock Beautiful soup.
 
+\bibitem{recta}
+\url{https://www.hiru.eus/es/matematicas/recta-de-regresion-y-correlaciones}.
+\newblock Recta de regresión.
+
 \bibitem{python}
 \url{https://www.python.org/}.
 \newblock Python software fundation.
@@ -55,5 +67,9 @@
 \bibitem{sqlite}
 \url{https://www.sqlite.org/index.html}.
 \newblock Sqlite.
+
+\bibitem{statsmodels}
+\url{https://www.statsmodels.org/stable/index.html}.
+\newblock Statsmodels.
 
 \end{thebibliography}

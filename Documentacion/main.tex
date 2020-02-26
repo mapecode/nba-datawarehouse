@@ -68,7 +68,7 @@ Para el análisis y la extracción de datos, se llevará a cabo el proyecto con 
 \section*{Obtención de los datos}
 Los datos se han obtenido aplicando técnicas de \textit{web scraping} \cite{web_scraping} gracias a la librería \textit{Beautiful Soup} \cite{Beautiful_Soup} de \textit{Python}. Con esta librería se obtiene el código HTML de una pagina web y se pueden realizar diversas operaciones con esa información, en nuestro caso hemos construido un \textit{dataframe} \cite{dataframe} para poder construir posteriormente la base de datos.
 
-\subsection{Datos de jugadores}
+\subsection*{Datos de jugadores}
 Los datos relacionados con los jugadores se han obtenido gracias al siguiente código \cite{web_scraping_nba} en \textit{Python}:\\
 
 \pythonexternal{../player_stats.py}
@@ -77,7 +77,7 @@ Como se puede ver, el programa esta formado por dos funciones. La primera para o
 
 Para obtener los datos que nos interesan de la web es necesario que sepamos cuáles son las etiquetas HTML que debemos de obtener del objeto \textit{soup}. Esto normalmente se realiza inspeccionando la página web con cualquier navegador.
 
-\subsection{Datos de equipos}
+\subsection*{Datos de equipos}
 Los datos relativos a los equipos de la \textit{nba} se han obtenido de forma similar a los datos de los jugadores:
 
 \pythonexternal{../team_stats.py}
@@ -85,7 +85,7 @@ Los datos relativos a los equipos de la \textit{nba} se han obtenido de forma si
 La función para obtener los datos de los equipos es muy similar a las funciones mencionadas anteriormente, con la diferencia que el \textit{dataframe} que retornamos lo ordenamos por el nombre del equipo. La segunda función en un principio no la desarrollamos, pero en la construcción de la base de datos apreciamos que los datos de los jugadores indican el equipo mediante abreviaturas. Por lo tanto esta función la utilizaremos para establecer las equivalencias.
 
 \section*{Creación de la base de datos}
-La creación de la base de datos la hemos automatizado gracias al siguiente \textit{script} que llama a las funciones explicadas en la sección anterior \ref{get_data}:
+La creación de la base de datos la hemos automatizado gracias al siguiente \textit{script} que llama a las funciones explicadas en la sección anterior:
 
 \pythonexternal{../build_database.py}
 
@@ -100,8 +100,62 @@ El programa lleva a cabo las siguientes operaciones:
 \section*{Modelo de regresión lineal}
 El modelo construido está basado en la regresión lineal simple de dos variables \cite{regresion}, los puntos totales que anota un jugador con sus intentos de tiro. El objetivo con este modelo será predecir cuántos puntos anotaría un jugador indicando los intentos de tiro.\\
 
-Los modelos predictivos o de regresión consisten en la representación de la relación entre dos (o más) variables a través de un modelo formal supone contar con una expresión lógico-matemática que resume cómo es esa relación. Además, este modelo permite realizar predicciones de los valores que tomará una de las dos variables (la que se asuma como variable de respuesta o dependiente) a partir de los valores de la otra (la que se asuma como variable explicativa, independiente o predictora) \cite{modelo_regresion}.
+Los modelos predictivos o de regresión consisten en la representación de la relación entre dos (o más) variables a través de un modelo formal supone contar con una expresión lógico-matemática que resume cómo es esa relación. Además, este modelo permite realizar predicciones de los valores que tomará una de las dos variables (la que se asuma como variable de respuesta o dependiente, \textit{y}) a partir de los valores de la otra (la que se asuma como variable explicativa, independiente o predictora, \textit{x}) \cite{modelo_regresion}.\\
 
+\subsection*{Cálculo del modelo}
+
+En nuestro caso, como vamos a realizar una regresión lineal simple la formula sería la siguiente:\\
+
+\begin{equation}
+\centering
+y = \alpha + \beta * x
+\end{equation}
+\\
+La variable que queremos predecir (\textit{y}) serán los puntos que anotará un jugador y para ello utilizaremos la variable explicativa de los tiros a canasta de un jugador (x), contando los tiros libres, los tiros de dos puntos y los triples. \\
+
+\begin{equation}
+\centering
+PTS = \alpha + \beta * TA
+\end{equation}
+\\
+Los parámetros utilizados en la predicción se van a calcular utilizando la librería \textit{statsmodels} \cite{statsmodels} de Python. Los pasos seguidos para calcular este modelo se pueden ver con detalle en el \textit{notebook} de \textit{Jupyter} \cite{jupyter} que hemos creado. La fórmula resultante con los parámetros calculados en base a los datos almacenados en nuestro \textit{data warehouse} es la siguiente:\\
+\begin{equation}
+\centering
+PTS = -5.209429 + 1.000137 * TA
+\end{equation}
+\\
+Al dibujar la recta de regresión \cite{recta} podemos observar como de bueno es el modelo creado para predecir los puntos que anotará un jugador introduciendo los intentos a canasta (ver Figura \ref{fig:recta}). Cuanto menos dispersos y más cercanos a la recta estén los puntos mejor será nuestro modelo.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{recta_regresion.png}
+	\caption{Recta de regresión de PTS~TA}
+	\label{fig:recta}
+\end{figure}
+
+\subsection*{Realizar predicción}
+En este punto, se va a realizar una serie de predicciones utilizando la expresión calculada anteriormente. En el Cuadro \ref{pred} se pueden ver cinco jugadores con los puntos reales anotados en la temporada y los puntos que predice nuestro modelo. Se puede apreciar que la predicción se asemeja bastante a los puntos que anota un jugador. \\
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Player} & \textbf{PTS} & \textbf{PTS\_pred} \\ \hline
+		Álex Abrines    & 165          & 164.813847         \\ \hline
+		Quincy Acy      & 17.0         & 22.794404          \\ \hline
+		Jaylen Adams    & 108.0        & 113.806864         \\ \hline
+		Steven Adams    & 1108.0       & 1095.941316        \\ \hline
+		Bam Adebayo     & 729.0        & 706.888055         \\ \hline
+	\end{tabular}
+	\caption{Predicciones del modelo}
+	\label{pred}
+\end{table}
+
+Cabe destacar que los parámetros han sido calculados con los mismos datos que luego hemos usado para predecir, por lo tanto, se puede dar el fenómeno de la multicolinealidad \cite{multicol}. Esto sucede cuando el modelo se ajusta demasiado a un conjunto de datos y cuando utilizamos otros datos para hacer una predicción el modelo falla. \\
+
+En nuestro caso, al usar datos de una temporada de una competición deportiva se presupone que los datos no van a ser muy desiguales de una temporada a otra. Con lo cual, nuestro modelo se debe comportar correctamente cuando introducimos un dato que no forma parte del conjunto utilizado para crear el modelo.
+
+\newpage
 
 
 

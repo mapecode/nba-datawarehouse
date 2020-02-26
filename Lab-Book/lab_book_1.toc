@@ -12,3 +12,7 @@
 \contentsline {experiment}{\numberline {2}Realizaci\IeC {\'o}n de consultas}{4}{experiment.4.2}% 
 \contentsline {chapter}{\nonumberline Lunes, 24 Febrero 2020}{5}{chapter*.6}% 
 \contentsline {experiment}{\numberline {1}Modelo de regresi\IeC {\'o}n lineal de jugadores}{5}{experiment.5.1}% 
+\contentsline {chapter}{\nonumberline Martes, 25 Febrero 2020}{6}{chapter*.7}% 
+\contentsline {experiment}{\numberline {1}Documentar el modelo de regresi\IeC {\'o}n lineal}{6}{experiment.6.1}% 
+\contentsline {chapter}{\nonumberline Mi\IeC {\'e}rcoles, 26 Febrero 2020}{7}{chapter*.8}% 
+\contentsline {experiment}{\numberline {1}Documentar el modelo de regresi\IeC {\'o}n lineal}{7}{experiment.7.1}% 

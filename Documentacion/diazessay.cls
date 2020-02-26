@@ -135,7 +135,7 @@
 		
 		\vspace{50pt} % Vertical whitespace between the title and author name
 		
-		{\large\@author}\\Mario Pérez Sánchez-Montañez, David Camuñas Sánchez\\ 
+		{\large\@author}\\Mario Pérez Sánchez-Montañez, David Camuñas Sánchez, Francesco Zingariello\\ 
 		\@date % Date
 		
 		\vspace{40pt} % Vertical whitespace between the author block and abstract
