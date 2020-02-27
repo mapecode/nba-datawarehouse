@@ -64,6 +64,7 @@ En nuestro caso, hemos construido un almacén de datos para almacenar las estad�
 Para el análisis y la extracción de datos, se llevará a cabo el proyecto con \textit{Python} \cite{python} y como motor de base de datos se utilizará \textit{SQLite} \cite{sqlite}. Nuestra base de datos estará formada por cuatro tablas, que se describirán posteriormente.
 
 %------------------------------------------------
+\clearpage
 
 \section*{Obtención de los datos}
 Los datos se han obtenido aplicando técnicas de \textit{web scraping} \cite{web_scraping} gracias a la librería \textit{Beautiful Soup} \cite{Beautiful_Soup} de \textit{Python}. Con esta librería se obtiene el código HTML de una pagina web y se pueden realizar diversas operaciones con esa información, en nuestro caso hemos construido un \textit{dataframe} \cite{dataframe} para poder construir posteriormente la base de datos.
@@ -83,6 +84,8 @@ Los datos relativos a los equipos de la \textit{nba} se han obtenido de forma si
 \pythonexternal{../team_stats.py}
 
 La función para obtener los datos de los equipos es muy similar a las funciones mencionadas anteriormente, con la diferencia que el \textit{dataframe} que retornamos lo ordenamos por el nombre del equipo. La segunda función en un principio no la desarrollamos, pero en la construcción de la base de datos apreciamos que los datos de los jugadores indican el equipo mediante abreviaturas. Por lo tanto esta función la utilizaremos para establecer las equivalencias.
+
+\clearpage
 
 \section*{Creación de la base de datos}
 La creación de la base de datos la hemos automatizado gracias al siguiente \textit{script} que llama a las funciones explicadas en la sección anterior:
@@ -127,8 +130,73 @@ La tabla \textbf{Jugadores} (PLayers), esta formada por:
 	\item \textbf{2P}: 2 points field goals.	
 	\item \textbf{2PA}: 2 point field goal attempts.
 	\item \textbf{2P\%}: FG\% on 2 points FGA's (field goal attempts).
-	
+	\item \textbf{FT}:Free Throwns.
+	\item \textbf{FTA}:Free Thrown Attempts.
+	\item \textbf{FT\%}: Free Throw Percentage.
+	\item\textbf{ORB}: Offensive Rebounds.
+	\item\textbf{DRB}: Defensive Rebounds.
+	\item\textbf{TRB}: Total Rebounds
+	\item\textbf{AST}: Assists.
+	\item\textbf{STL}: Steals.
+	\item\textbf{BLK}: Blocks.
+	\item\textbf{TOV}:Turnovers.
+	\item\textbf{PF}: Personal Fouls.
+	\item\textbf{PTS}: Points.
 \end{itemize}
+
+La tabla \textbf{Equipos} (Teams), esta formada por:
+\begin{itemize}
+	\item \textbf{id}: Team id.
+	\item \textbf{Key}: Team initials.
+	\item \textbf{Team}: Team name.
+	\item \textbf{Conf}: Team's conference.
+	\item \textbf{Div}: Team's division.
+	\item \textbf{W}: Wins.
+	\item \textbf{L}: Losses.
+	\item \textbf{W/L\%}: Win-Loss Percentage.
+	\item \textbf{MOV}: Margin of Victory.
+	\item\textbf{ORTg}: Offensive Rating. An estimate of points produced (\textit{players}) or scored (\textit{teams}) per 100 possessions.
+	\item\textbf{DRTg}: Defensive Rating. An estimate of points allowed per 100 possessions.
+	\item\textbf{NRTg}: Net Rating. An estimate of point differential per 100 possessions.
+\end{itemize}
+
+La tabla \textbf{Rookies}, esta formada por:
+\begin{itemize}
+	\item \textbf{id}: Rookie id.
+	\item \textbf{Player}: Player full name.
+	\item \textbf{Debut}: Debut.
+	\item \textbf{Age}: Player age.
+	\item \textbf{G}: Games.
+	\item \textbf{MP}: Minutes played.
+	\item \textbf{FG (3P + 2P)}: Field goals.
+	\item \textbf{FGA (3PA + 2PA)}: Field goal attempts.
+	\item \textbf{3P}: 3 points field goals.
+	\item \textbf{3PA}: 3 point field goal attempts.
+	\item \textbf{3P\%}: FG\% on 3 points FGA's (field goal attempts).
+	\item \textbf{FT}:Free Throwns.
+	\item \textbf{FTA}:Free Thrown Attempts.
+	\item \textbf{FT\%}: Free Throw Percentage.
+	\item\textbf{ORB}: Offensive Rebounds.
+	\item\textbf{DRB}: Defensive Rebounds.
+	\item\textbf{TRB}: Total Rebounds
+	\item\textbf{AST}: Assists.
+	\item\textbf{STL}: Steals.
+	\item\textbf{BLK}: Blocks.
+	\item\textbf{TOV}:Turnovers.
+	\item\textbf{PF}: Personal Fouls.
+	\item\textbf{PTS}: Points.
+\end{itemize}
+
+La tabla \textbf{Jugadores-Equipos} (Players-Teams), esta formada por:
+\begin{itemize}
+	\item\textbf{id-Player}: Player id.
+	\item\textbf{id-Team}: Team id.
+	\item\textbf{Player}: Player full name.
+	\item\textbf{Team}: Team name.
+	\item\textbf{Rookie}: Rookie id. If \textit{player} is a \textit{rookie}, then \textit{id-Rookie} stores in this attribute.
+\end{itemize}
+
+\clearpage
 
 \section*{Modelo de regresión lineal}
 El modelo construido está basado en la regresión lineal simple de dos variables \cite{regresion}, los puntos totales que anota un jugador con sus intentos de tiro. El objetivo con este modelo será predecir cuántos puntos anotaría un jugador indicando los intentos de tiro.\\
