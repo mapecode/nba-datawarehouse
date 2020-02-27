@@ -98,7 +98,7 @@ El programa lleva a cabo las siguientes operaciones:
 \end{itemize}
 
 \subsection*{Diagrama relacional}
-El diagrama relacional de nuestra base de datos, estará formado por cuatro tablas relacionadas en forma de estrella, de las cuales tres de ellas las crearemos a partir de los datos obtenidos en el punto anterior (\textit{Equipos}, \textit{Jugadores} y \textit{Rookies}). La cuarta tabla (\textit{Jugadores Equipos}) es una tabla central, la cual está relacionada con cada una de las anteriores tablas.
+El diagrama relacional de nuestra base de datos, estará formado por cuatro tablas relacionadas en forma de estrella, de las cuales tres de ellas las crearemos a partir de los datos obtenidos en el punto anterior (\textit{Equipos}, \textit{Jugadores} y \textit{Rookies}). La cuarta tabla (\textit{Jugadores-Equipos}) es una tabla central, la cual está relacionada con cada una de las anteriores tablas.
 
 \begin{figure}[h!]
 	\centering
@@ -107,6 +107,28 @@ El diagrama relacional de nuestra base de datos, estará formado por cuatro tabl
 	\label{fig:diagrama}
 \end{figure}
 
+A continuación, se explicara la definición de cada parametro por los que está formada cada tabla.\\
+
+La tabla \textbf{Jugadores} (PLayers), esta formada por:
+\begin{itemize}
+	\item \textbf{id}: Player id.
+	\item \textbf{Player}: Player full name.
+	\item \textbf{Pos}: Position.
+	\item \textbf{Age}: Player age.
+	\item \textbf{G}: Games.
+	\item \textbf{GS}: Games started
+	\item \textbf{MP}: Minutes played.
+	\item \textbf{FG (3P + 2P)}: Field goals.
+	\item \textbf{FGA (3PA + 2PA)}: Field goal attempts.
+	\item \textbf{FG\%}: Field goal percentage.
+	\item \textbf{3P}: 3 points field goals.
+	\item \textbf{3PA}: 3 point field goal attempts.
+	\item \textbf{3P\%}: FG\% on 3 points FGA's (field goal attempts).
+	\item \textbf{2P}: 2 points field goals.	
+	\item \textbf{2PA}: 2 point field goal attempts.
+	\item \textbf{2P\%}: FG\% on 2 points FGA's (field goal attempts).
+	
+\end{itemize}
 
 \section*{Modelo de regresión lineal}
 El modelo construido está basado en la regresión lineal simple de dos variables \cite{regresion}, los puntos totales que anota un jugador con sus intentos de tiro. El objetivo con este modelo será predecir cuántos puntos anotaría un jugador indicando los intentos de tiro.\\
