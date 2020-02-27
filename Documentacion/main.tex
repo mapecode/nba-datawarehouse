@@ -97,6 +97,16 @@ El programa lleva a cabo las siguientes operaciones:
 	\item \textbf{Construcción de la base datos}: en este último paso se construirán las cuatro tablas de la base datos y se introducirán los datos guardados en los cuatro \textit{dataframes} que hemos comentado. Las operaciones que se ejecutan para crear las tabla y sus respectivas relaciones se pueden ver en el fichero \textit{\textbf{creation.sql}}.
 \end{itemize}
 
+\subsection*{Diagrama relacional}
+El diagrama relacional de nuestra base de datos, estará formado por cuatro tablas relacionadas en forma de estrella, de las cuales tres de ellas las crearemos a partir de los datos obtenidos en el punto anterior (\textit{Equipos}, \textit{Jugadores} y \textit{Rookies}). La cuarta tabla (\textit{Jugadores_Equipos}) es una tabla central, la cual está relacionada con cada una de las anteriores tablas.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{bd_dRelacional.pdf}
+	\caption{Diagrama relacional de nuestra base de datos}
+	\label{fig:diagrama}
+\end{figure}
+
 \section*{Modelo de regresión lineal}
 El modelo construido está basado en la regresión lineal simple de dos variables \cite{regresion}, los puntos totales que anota un jugador con sus intentos de tiro. El objetivo con este modelo será predecir cuántos puntos anotaría un jugador indicando los intentos de tiro.\\
 
