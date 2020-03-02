@@ -198,6 +198,102 @@ La tabla \textbf{Jugadores-Equipos} (Players-Teams), esta formada por:
 
 \clearpage
 
+\section{Obtención de estadísticas}
+A continuación, se realizarán una serie de consultas para obtener información sobre algunas estadísticas sobre los jugadores y los equipos de esta temporada. Para ver la gran utilidad que puede aportar la unión de estas dos tecnologías \textit{SQLite} y \textit{Python}.\\
+
+Para facilitar la obtención de los datos se han generado una serie de \textit{vistas SQL}, las cuales están almacenadas en nuestra base de datos (\textit{nba-data.db}). \\
+
+Estas son las siguientes:
+\pythonexternal{../Queries.sql}
+
+
+\subsection{Porcentaje de jugadores y rookies de la temporada.}
+Mediante un diagrama en forma de "pastel" se puede observar de forma rápida e intutiva en este caso, los jugadores \textit{rookies} y no \textit{rookies} que jugaron esta temporada.
+
+Lo mas importante es generar bien la consulta, a partir de la cual se va a generar el \textit{dataframe}:\\
+
+\textit{"SELECT * FROM STAT-PT"}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{rookies.png}
+	\caption{Porcentaje de jugadores y rookies de la temporada.}
+	\label{fig:rookies}
+\end{figure}
+
+\subsection{Número de jugadores y rookies de cada conferencia}
+Se obtendrán los datos sobre el numero de jugadores y número de rookies de cada conferencia. 
+
+Para poder obtener los datos se ha utlizado la siguiente consulta \textit{SQL}:\\
+
+\textit{"SELECT Conference, SUM(NoRookies-Perc) AS "PlayersPerc",SUM(RookiesPerc) AS "RookiesPerc" FROM STAT-PT GROUP BY Conference;"}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{rookies-conf.png}
+	\caption{Porcentaje de jugadores y rookies por conferencia.}
+	\label{fig:rookies-conf}
+\end{figure}
+
+\subsection{Número de jugadores que tiene cada equipo}
+Se obtendra el número de jugadores que componen cada equipo de la temporada, los datos han sido obtenidos a partir de la siguiente consulta:\\
+
+\textit{"SELECT * FROM NUM-PT"}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{teams.png}
+	\caption{Número de jugadores que tiene cada equipo.}
+	\label{fig:teams}
+\end{figure}
+
+\subsection{Simulación clasificación final de la temporada}
+Se mostrará la clasificación final de la temporada. Sin tener en cuenta la conferencia a la que pertenece cada equipo, ni los \textit{playoffs}. 
+Se han obtenidos los datos de la base de datos a partir de la siguiente consulta:\\
+
+\textit{"SELECT Key, Team, Conf, W, L FROM TEAMS ORDER BY W/L DESC;"}
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|c|c|l|c|}
+		\hline
+		\textbf{Pos} & \textbf{Key} & \multicolumn{1}{c|}{\textbf{Team}} & \textbf{Conf} \\ \hline
+		\textbf{1}   & MIL          & Milwaukee Bucks                    & E             \\ \hline
+		\textbf{2}   & TOR          & Toronto Raptors                    & E             \\ \hline
+		\textbf{3}   & GSW          & Golden State Warriors              & W             \\ \hline
+		\textbf{4}   & DEN          & Denver Nuggets                     & W             \\ \hline
+		\textbf{5}   & HOU          & Houston Rockets                    & W             \\ \hline
+		\textbf{6}   & POR          & Portland Trail Blazers             & W             \\ \hline
+		\textbf{7}   & PHI          & Philadelphia 76ers                 & E             \\ \hline
+		\textbf{8}   & UTA          & Utah Jazz                          & W             \\ \hline
+		\textbf{9}   & BOS          & Boston Celtics                     & E             \\ \hline
+		\textbf{10}  & OKC          & Oklahoma City Thunder              & W             \\ \hline
+	\end{tabular}
+	\caption{Clasificación final de la temporada (sin \textit{Playoffs}).}
+	\label{qualy}
+\end{table}
+
+\subsection{Obtener la información del mejor equipo de cada conferencia.}
+Se obtendrá la información del mejor equipo de cada conferencia, en este caso : Este (E): \textit{Milwaukee Bucks}, Oeste (W):
+\textit{Golden State Warriors}. 
+Se ha utilizado la siguiente consulta:\\
+ 
+\textit{"SELECT * FROM TEAMS GROUP BY CONF HAVING MAX(W/L);"}
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+		\hline
+		\textbf{Key} & \textbf{Team}         & \textbf{Conf} & \textbf{W} & \textbf{L} & \textbf{W/L \%} & \textbf{MOV} & \textbf{ORtg} & \textbf{DRtg} & \textbf{NRtg} \\ \hline
+		MIL          & Milwaukee Bucks       & E             & 60         & 22         & 0.732           & 8.87         & 114.23        & 105.76        & 8.47          \\ \hline
+		GSW          & Golden State Warriors & W             & 57         & 25         & 0.695           & 6.46         & 116.63        & 110.24        & 6.39          \\ \hline
+	\end{tabular}
+	\caption{Primer equipo de cada conferencia (E/W)}
+	\label{teamConf}
+\end{table}
+
+\clearpage
+
 \section*{Modelo de regresión lineal}
 El modelo construido está basado en la regresión lineal simple de dos variables \cite{regresion}, los puntos totales que anota un jugador con sus intentos de tiro. El objetivo con este modelo será predecir cuántos puntos anotaría un jugador indicando los intentos de tiro.\\
 
