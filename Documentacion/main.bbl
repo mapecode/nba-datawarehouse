@@ -28,6 +28,10 @@
 \url{https://jupyter.org/}.
 \newblock Jupyter.
 
+\bibitem{matplotlib}
+\url{https://matplotlib.org/}.
+\newblock matplotlib.
+
 \bibitem{pandas}
 \url{https://pandas.pydata.org/}.
 \newblock Pandas.

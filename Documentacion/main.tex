@@ -45,12 +45,14 @@
 %\renewcommand{\abstractname}{Summary} % Uncomment to change the name of the abstract to something else
 
 \begin{abstract}
+	
+	Un \textit{Data Warehouse} es una herramienta de \textit{Big Data} muy utilizada en la actualidad. Este trabajo se basa en la creación de un almacén de datos de la \textit{NBA}, con el objetivo de obtener datos relevantes sobre la temporada 2018-2019.
 
 \end{abstract}
 
-%\hspace*{3.6mm}\textit{Keywords:} lorem, ipsum, dolor, sit amet, lectus % Keywords
+\hspace*{3.6mm}\textit{Keywords:} \textit{Big Data}, \textit{Data Warehouse}, NBA
 
-\vspace{30pt} % Vertical whitespace between the abstract and first section
+\vspace{20pt} % Vertical whitespace between the abstract and first section
 
 %----------------------------------------------------------------------------------------
 %	ESSAY BODY
@@ -198,17 +200,28 @@ La tabla \textbf{Jugadores-Equipos} (Players-Teams), esta formada por:
 
 \clearpage
 
-\section{Obtención de estadísticas}
-A continuación, se realizarán una serie de consultas para obtener información sobre algunas estadísticas sobre los jugadores y los equipos de esta temporada. Para ver la gran utilidad que puede aportar la unión de estas dos tecnologías \textit{SQLite} y \textit{Python}.\\
+\section*{Obtención de estadísticas}
+A continuación, se realizarán una serie de consultas para obtener información sobre algunas estadísticas sobre los jugadores y los equipos de esta temporada. Para ver la gran utilidad que puede aportar la unión de estas dos tecnologías \textit{SQLite} \cite{sqlite} y \textit{Python}. Además, se van a generar distintos gráficos con la librería \textit{matplotlib} \cite{matplotlib} de \textit{Python}. \\
 
-Para facilitar la obtención de los datos se han generado una serie de \textit{vistas SQL}, las cuales están almacenadas en nuestra base de datos (\textit{nba-data.db}). \\
-
-Estas son las siguientes:
+Para facilitar la obtención de los datos se han generado una serie de \textit{vistas SQL}, las cuales están almacenadas en nuestra base de datos (\textit{nba-data.db}) y son las siguientes:
 \pythonexternal{../Queries.sql}
+\newpage
+\subsection*{Número de jugadores que tiene cada equipo}
+Se obtendrá el número de jugadores que componen cada equipo de la temporada (ver Figura \ref{fig:playersteams}), los datos han sido obtenidos a partir de la siguiente consulta:\\
+
+\textit{"SELECT * FROM NUM-PT"}
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{teams.png}
+	\caption{Número de jugadores que tiene cada equipo.}
+	\label{fig:playersteams}
+\end{figure}
 
 
-\subsection{Porcentaje de jugadores y rookies de la temporada.}
-Mediante un diagrama en forma de "pastel" se puede observar de forma rápida e intutiva en este caso, los jugadores \textit{rookies} y no \textit{rookies} que jugaron esta temporada.
+
+\subsection*{Porcentaje de jugadores y rookies de la temporada.}
+Mediante un diagrama en forma de "pastel" se puede observar de forma rápida e intutiva en este caso en la Figura \ref{fig:rookies}, los jugadores \textit{rookies} y no \textit{rookies} que jugaron esta temporada.\\
 
 Lo mas importante es generar bien la consulta, a partir de la cual se va a generar el \textit{dataframe}:\\
 
@@ -221,8 +234,9 @@ Lo mas importante es generar bien la consulta, a partir de la cual se va a gener
 	\label{fig:rookies}
 \end{figure}
 
-\subsection{Número de jugadores y rookies de cada conferencia}
-Se obtendrán los datos sobre el numero de jugadores y número de rookies de cada conferencia. 
+
+\subsection*{Número de jugadores y rookies de cada conferencia}
+Se obtendrán los datos sobre el numero de jugadores y número de rookies de cada conferencia, como se puede ver en la Figura \ref{fig:rookies-conf}. \\
 
 Para poder obtener los datos se ha utlizado la siguiente consulta \textit{SQL}:\\
 
@@ -235,20 +249,8 @@ Para poder obtener los datos se ha utlizado la siguiente consulta \textit{SQL}:\
 	\label{fig:rookies-conf}
 \end{figure}
 
-\subsection{Número de jugadores que tiene cada equipo}
-Se obtendra el número de jugadores que componen cada equipo de la temporada, los datos han sido obtenidos a partir de la siguiente consulta:\\
-
-\textit{"SELECT * FROM NUM-PT"}
-
-\begin{figure}[!h]
-	\centering
-	\includegraphics[width=0.5\linewidth]{teams.png}
-	\caption{Número de jugadores que tiene cada equipo.}
-	\label{fig:teams}
-\end{figure}
-
-\subsection{Simulación clasificación final de la temporada}
-Se mostrará la clasificación final de la temporada. Sin tener en cuenta la conferencia a la que pertenece cada equipo, ni los \textit{playoffs}. 
+\subsection*{Simulación clasificación final de la temporada}
+Se mostrará la clasificación final de la temporada (ver Cuadro \ref{qualy}). Sin tener en cuenta la conferencia a la que pertenece cada equipo, ni los \textit{playoffs}. 
 Se han obtenidos los datos de la base de datos a partir de la siguiente consulta:\\
 
 \textit{"SELECT Key, Team, Conf, W, L FROM TEAMS ORDER BY W/L DESC;"}
@@ -272,10 +274,10 @@ Se han obtenidos los datos de la base de datos a partir de la siguiente consulta
 	\caption{Clasificación final de la temporada (sin \textit{Playoffs}).}
 	\label{qualy}
 \end{table}
-
-\subsection{Obtener la información del mejor equipo de cada conferencia.}
+\newpage
+\subsection*{Obtener la información del mejor equipo de cada conferencia.}
 Se obtendrá la información del mejor equipo de cada conferencia, en este caso : Este (E): \textit{Milwaukee Bucks}, Oeste (W):
-\textit{Golden State Warriors}. 
+\textit{Golden State Warriors}, como se puede ver en el Cuadro \ref{teamConf}. 
 Se ha utilizado la siguiente consulta:\\
  
 \textit{"SELECT * FROM TEAMS GROUP BY CONF HAVING MAX(W/L);"}
@@ -292,7 +294,7 @@ Se ha utilizado la siguiente consulta:\\
 	\label{teamConf}
 \end{table}
 
-\clearpage
+
 
 \section*{Modelo de regresión lineal}
 El modelo construido está basado en la regresión lineal simple de dos variables \cite{regresion}, los puntos totales que anota un jugador con sus intentos de tiro. El objetivo con este modelo será predecir cuántos puntos anotaría un jugador indicando los intentos de tiro.\\
