@@ -1,18 +1,22 @@
-\contentsline {chapter}{\nonumberline Martes, 11 de Febrero}{1}{chapter*.2}% 
-\contentsline {experiment}{\numberline {1}Elecci\IeC {\'o}n de la tecnolog\IeC {\'\i }as}{1}{experiment.1.1}% 
-\contentsline {experiment}{\numberline {2}Elecci\IeC {\'o}n del motor de base de datos}{1}{experiment.1.2}% 
-\contentsline {chapter}{\nonumberline Jueves, 13 Febrero 2020}{2}{chapter*.3}% 
-\contentsline {experiment}{\numberline {1}Obtenci\IeC {\'o}n de los datos para el \textit {DataWarehouse}}{2}{experiment.2.1}% 
-\contentsline {experiment}{\numberline {2}Cambio en dise\IeC {\~n}o del \textit {Data Warehouse}}{2}{experiment.2.2}% 
-\contentsline {chapter}{\nonumberline Viernes, 14 Febrero 2020}{3}{chapter*.4}% 
-\contentsline {experiment}{\numberline {1}Primer versi\IeC {\'o}n de la base de datos}{3}{experiment.3.1}% 
-\contentsline {experiment}{\numberline {2}Primeras consultas en la Base de Datos}{3}{experiment.3.2}% 
-\contentsline {chapter}{\nonumberline Lunes, 17 Febrero 2020}{4}{chapter*.5}% 
-\contentsline {experiment}{\numberline {1}Cambio en la obtenci\IeC {\'o}n de datos}{4}{experiment.4.1}% 
-\contentsline {experiment}{\numberline {2}Realizaci\IeC {\'o}n de consultas}{4}{experiment.4.2}% 
-\contentsline {chapter}{\nonumberline Lunes, 24 Febrero 2020}{5}{chapter*.6}% 
-\contentsline {experiment}{\numberline {1}Modelo de regresi\IeC {\'o}n lineal de jugadores}{5}{experiment.5.1}% 
-\contentsline {chapter}{\nonumberline Martes, 25 Febrero 2020}{6}{chapter*.7}% 
-\contentsline {experiment}{\numberline {1}Documentar el modelo de regresi\IeC {\'o}n lineal}{6}{experiment.6.1}% 
-\contentsline {chapter}{\nonumberline Mi\IeC {\'e}rcoles, 26 Febrero 2020}{7}{chapter*.8}% 
-\contentsline {experiment}{\numberline {1}Documentar el modelo de regresi\IeC {\'o}n lineal}{7}{experiment.7.1}% 
+\contentsline {chapter}{\nonumberline Martes, 11 de Febrero}{1}{chapter*.2}
+\contentsline {experiment}{\numberline {1}Elección de la tecnologías}{1}{experiment.1.1}
+\contentsline {experiment}{\numberline {2}Elección del motor de base de datos}{1}{experiment.1.2}
+\contentsline {chapter}{\nonumberline Jueves, 13 Febrero 2020}{2}{chapter*.3}
+\contentsline {experiment}{\numberline {1}Obtención de los datos para el \textit {DataWarehouse}}{2}{experiment.2.1}
+\contentsline {experiment}{\numberline {2}Cambio en diseño del \textit {Data Warehouse}}{2}{experiment.2.2}
+\contentsline {chapter}{\nonumberline Viernes, 14 Febrero 2020}{3}{chapter*.4}
+\contentsline {experiment}{\numberline {1}Primer versión de la base de datos}{3}{experiment.3.1}
+\contentsline {experiment}{\numberline {2}Primeras consultas en la Base de Datos}{3}{experiment.3.2}
+\contentsline {chapter}{\nonumberline Lunes, 17 Febrero 2020}{4}{chapter*.5}
+\contentsline {experiment}{\numberline {1}Cambio en la obtención de datos}{4}{experiment.4.1}
+\contentsline {experiment}{\numberline {2}Realización de consultas}{4}{experiment.4.2}
+\contentsline {chapter}{\nonumberline Lunes, 24 Febrero 2020}{5}{chapter*.6}
+\contentsline {experiment}{\numberline {1}Modelo de regresión lineal de jugadores}{5}{experiment.5.1}
+\contentsline {chapter}{\nonumberline Martes, 25 Febrero 2020}{6}{chapter*.7}
+\contentsline {experiment}{\numberline {1}Documentar el modelo de regresión lineal}{6}{experiment.6.1}
+\contentsline {experiment}{\numberline {2}Generar los gráficos estadísticos}{6}{experiment.6.2}
+\contentsline {chapter}{\nonumberline Miércoles, 26 Febrero 2020}{7}{chapter*.8}
+\contentsline {experiment}{\numberline {1}Documentar el modelo de regresión lineal}{7}{experiment.7.1}
+\contentsline {experiment}{\numberline {2}Documentar consultas y estadísticas}{7}{experiment.7.2}
+\contentsline {chapter}{\nonumberline Lunes, 2 Marzo 2020}{8}{chapter*.9}
+\contentsline {experiment}{\numberline {1}Creada presentación del proyecto}{8}{experiment.8.1}
